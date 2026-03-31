@@ -28,21 +28,36 @@ fi
 
 echo "Checking Marketplace version for ${EXT_ID}..."
 
-SHOW_JSON="$(
-  vsce show "${EXT_ID}" --json "$@" 2>/dev/null || true
+SHOW_OUTPUT="$(
+  vsce show "${EXT_ID}" --json "$@" 2>&1 || true
 )"
 
-if [[ -z "$SHOW_JSON" ]]; then
+if [[ -z "$SHOW_OUTPUT" ]]; then
   echo "Could not read Marketplace version. Aborting to avoid an unintended publish." >&2
   echo "Run manually: vsce publish ${CURRENT_VERSION}  OR  vsce publish ${BUMP_KIND}" >&2
   exit 1
 fi
 
+if [[ "$SHOW_OUTPUT" == *" ERROR "* ]] || [[ "$SHOW_OUTPUT" == *"getaddrinfo"* ]]; then
+  echo "Could not reach the VS Code Marketplace while checking ${EXT_ID}." >&2
+  echo "$SHOW_OUTPUT" >&2
+  echo "Run manually once connectivity is working: vsce publish ${CURRENT_VERSION} --no-yarn --no-dependencies" >&2
+  exit 1
+fi
+
 PUBLISHED_VERSION="$(
-  printf '%s' "$SHOW_JSON" | node -e '
+  printf '%s' "$SHOW_OUTPUT" | node -e '
     const fs = require("fs");
     const input = fs.readFileSync(0, "utf8").trim();
-    const data = JSON.parse(input);
+    if (!input || input === "undefined") {
+      process.exit(0);
+    }
+    let data;
+    try {
+      data = JSON.parse(input);
+    } catch {
+      process.exit(0);
+    }
     const semver = (v) => typeof v === "string" && /^\d+\.\d+\.\d+(-[\w.-]+)?$/.test(v);
     const pick = (obj) => {
       if (!obj || typeof obj !== "object") return "";
@@ -61,7 +76,10 @@ PUBLISHED_VERSION="$(
 )"
 
 if [[ -z "$PUBLISHED_VERSION" ]]; then
-  echo "Could not parse published version from Marketplace response. Aborting." >&2
+  echo "Could not parse published version from Marketplace response for ${EXT_ID}. Aborting." >&2
+  echo "Raw response:" >&2
+  printf '%s\n' "$SHOW_OUTPUT" >&2
+  echo "Run manually if needed: vsce publish ${CURRENT_VERSION} --no-yarn --no-dependencies" >&2
   exit 1
 fi
 
