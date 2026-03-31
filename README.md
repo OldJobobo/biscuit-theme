@@ -1,12 +1,18 @@
+<p align="center">
+  <img src="./rainbow-mar.png" alt="Biscuit logo" width="220" />
+</p>
+
 # Biscuit Theme
 
 Biscuit for VS Code.
 
-Built from your Omarchy Biscuit palette and tuned from the Miasma VS Code theme as a base so the UI and syntax highlighting stay cohesive.
+Built from the Omarchy Biscuit palette and tuned for stronger syntax and semantic highlighting across the languages most people actually use.
+
+![Biscuit Theme Preview](./preview.png)
 
 ## Install
 
-Install from a local VSIX or the VS Code Marketplace once published:
+Install from the VS Code Marketplace:
 
 ```bash
 code --install-extension oldjobobo.biscuit-theme
@@ -16,7 +22,13 @@ code --install-extension oldjobobo.biscuit-theme
 
 - Dark Biscuit UI theme
 - Semantic highlighting support
-- Miasma-based syntax highlighting coverage adapted to the Biscuit palette
+- Expanded syntax highlighting coverage for Rust, JavaScript, TypeScript, Python, Shell, Markdown, CSS, JSON, TOML, YAML, HTML, Lua, and diff views
+
+## Highlighting Coverage
+
+- `391` TextMate scopes themed
+- `52` semantic token selectors themed
+- Semantic highlighting enabled by the theme
 
 ## Palette
 
@@ -30,4 +42,3 @@ code --install-extension oldjobobo.biscuit-theme
 ## Notes
 
 - Semantic highlighting is enabled by the theme.
-- The current extension assets were copied from the Miasma package scaffold and can be replaced with Biscuit-specific artwork later.
