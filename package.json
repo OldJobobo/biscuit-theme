@@ -2,7 +2,7 @@
   "name": "biscuit-theme",
   "displayName": "Biscuit Theme",
   "description": "Biscuit color theme for VS Code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "oldjobobo",
   "icon": "biscuit-theme-icon.png",
   "license": "MIT",
