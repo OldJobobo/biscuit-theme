@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./rainbow-mar.png" alt="Biscuit logo" width="220" />
+  <img src="https://raw.githubusercontent.com/OldJobobo/biscuit-theme/master/rainbow-mar.png" alt="Biscuit logo" width="220" />
 </p>
 
 # Biscuit Theme
@@ -8,7 +8,7 @@ Biscuit for VS Code.
 
 Built from the Omarchy Biscuit palette and tuned for stronger syntax and semantic highlighting across the languages most people actually use.
 
-![Biscuit Theme Preview](./preview.png)
+![Biscuit Theme Preview](https://raw.githubusercontent.com/OldJobobo/biscuit-theme/master/preview.png)
 
 ## Install
 
