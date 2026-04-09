@@ -361,7 +361,7 @@
     "banner.iconForeground": "#AE3F82",
     "extensionButton.prominentBackground": "#959A6B",
     "extensionButton.prominentForeground": "#1A1515",
-    "extensionButton.prominentHoverBackground": "#2d2424",
+    "extensionButton.prominentHoverBackground": "#ffe9c7",
     "extensionBadge.remoteBackground": "#756D94",
     "extensionBadge.remoteForeground": "#ffe9c7",
     "extensionIcon.starForeground": "#F07342",
